@@ -25,7 +25,7 @@ body {
     margin: 3vmin;
     border: 1vmin solid white;
     border-radius: 50%;
-    background-color: darkgrey;
+    /* background-color: darkgrey; */
     background-size: contain;
     animation: rotating 0s linear infinite;
 }

@@ -6,6 +6,17 @@ const boardEl = document.getElementById("board");
 const msgEl = document.getElementById("message");
 
 /*----- classes -----*/
+class Square {
+    constructor(domElement) {
+        this.domElement = domElement;
+        this.value = null;
+        this.render();
+    }
+    static renderLookup = { 1: "purple", "-1": "orange", null: "darkgrey" };
+    render() {
+        this.domElement.style.backgroundColor = Square.renderLookup[this.value];
+    }
+}
 class TicTacToeGame {
     constructor(boardElement, messageElement) {
         this.boardElement = boardElement;
@@ -20,15 +31,17 @@ class TicTacToeGame {
     render() {
         console.log("Render game..");
     }
-    play() {}
+    play() {
+        this.squares = this.squareEls.map((el) => new Square(el));
+    }
     setMessage(msg) {
         this.messageElement.innerText = msg;
     }
 }
 /*----- functions -----*/
-initialize();
 
 function initialize() {
     game = new TicTacToeGame(boardEl, msgEl);
+    game.play();
 }
-console.log("test");
+document.getElementById("play_button").addEventListener("click", initialize);
